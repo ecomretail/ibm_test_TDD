@@ -4,6 +4,7 @@ public class CafePurchase {
 	private HashMap<Long, Long> purchase = new HashMap<Long, Long>(); //Map of item (ID, quantity)
     private Double purchaseTotal = new Double(0);
 	private String currency = "£";
+	private Double serviceCharge = new Double(0);
 	public CafePurchase(){}
 	
 	public void addItem(CafeItem item,Long quantity) {
@@ -13,6 +14,7 @@ public class CafePurchase {
 		else
 			totalQuantity = quantity;
 		purchaseTotal+=item.getItemPrice()*quantity;
+		serviceCharge = 0.1*purchaseTotal;
 		this.purchase.put(item.getItemId(),totalQuantity);
 	}
 	
@@ -25,6 +27,12 @@ public class CafePurchase {
 	}
     public Double getTotal(){
 		return this.purchaseTotal;
+	}
+	public String getServiceChargeAsString(){
+		return this.currency +""+this.serviceCharge;
+	}
+    public Double getServiceCharge(){
+		return this.serviceCharge;
 	}
 
 	

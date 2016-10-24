@@ -36,7 +36,11 @@ public class BillingServiceTest {
 		 +"->totalPrice :"+item.getItemCurrency()+""+
 		itemquantity*item.getItemPrice());
 	}
+	/** read total purchase */
 		System.out.println("Current purchase -total-"+purchase.getTotalAsString());
+	/** read total purchase service charge */
+		System.out.println("Current service charges-"+purchase.getServiceChargeAsString());
+	
     assertEquals(6, 6);
   }
 }
