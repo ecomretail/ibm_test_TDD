@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class CafePurchase {
 	private HashMap<Long, Long> purchase = new HashMap<Long, Long>(); //Map of item (ID, quantity)
@@ -36,16 +37,18 @@ public class CafePurchase {
 	}
 
 	public String getTotalAsString(){
-		return this.currency +""+this.purchaseTotal;
+		return this.currency +""+this.getTotal();
 	}
     public Double getTotal(){
-		return this.purchaseTotal;
+		DecimalFormat df = new DecimalFormat("###.##");
+		return new Double(df.format(purchaseTotal));
 	}
 	public String getServiceChargeAsString(){
-		return this.currency +""+this.serviceCharge;
+		return this.currency +""+this.getServiceCharge();
 	}
     public Double getServiceCharge(){
-		return this.serviceCharge;
+		DecimalFormat df = new DecimalFormat("###.##");
+		return new Double(df.format(serviceCharge));
 	}
 
 	
