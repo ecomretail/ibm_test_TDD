@@ -5,10 +5,10 @@ public class CafeMenu {
 	private static CafeMenu menu = null;
 	private CafeMenu(){
 		menuItems = new ArrayList<CafeItem>();
-		menuItems.add(new CafeItem(1, "Cola", "Cold drink", new Double(.50)));
-		menuItems.add(new CafeItem(2, "Coffee", "Hot drink", new Double(1.00)));
-		menuItems.add(new CafeItem(3, "Cheese Sandwich", "Cold food", new Double(2.00)));
-		menuItems.add(new CafeItem(4, "Steak Sandwich", "Hot food", new Double(4.50)));
+		menuItems.add(new CafeItem(new Long("1"), "Cola", "Cold drink", new Double(.50)));
+		menuItems.add(new CafeItem(new Long("2"), "Coffee", "Hot drink", new Double(1.00)));
+		menuItems.add(new CafeItem(new Long("3"), "Cheese Sandwich", "Cold food", new Double(2.00)));
+		menuItems.add(new CafeItem(new Long("4"), "Steak Sandwich", "Hot food", new Double(4.50)));
 	}
 	
 	public static CafeMenu getCafeMenu(){
@@ -28,10 +28,11 @@ public class CafeMenu {
 	public CafeItem getCafeMenuItem(Long itemid) {
 		CafeItem menuItem = null;
 		for(CafeItem item : menuItems){
-			if(item.getItemId() == itemid){
+			if(item.getItemId().intValue() == itemid.intValue()){
 				menuItem = item; break;
 			}
 		}
+		System.out.println("menuItem search: "+itemid + ":" +menuItem);
 		return menuItem;
 	}
 }

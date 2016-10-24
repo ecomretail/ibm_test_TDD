@@ -1,13 +1,13 @@
 public class CafeItem {
 
-    private int itemId;
+    private Long itemId;
     private String itemCategory;
     private String itemName;
     private Double itemPrice = new Double(0);
     private String itemCurrency = "£";
 
-    public CafeItem(int itemid, String itemname, String category, Double itemprice) {
-       this.itemId = itemid;
+    public CafeItem(Long id, String itemname, String category, Double itemprice) {
+       this.itemId = id;
 	   this.itemCategory = category;
        this.itemName = itemname;
 	   this.itemPrice = itemprice;
@@ -18,13 +18,14 @@ public class CafeItem {
 	}
 	@Override
 	public String toString(){
-		return Integer.toString(this.itemId) + ". " + this.itemName + " - "+this.itemCategory + " - " + this.getItemPriceAsString();
+		return this.itemId.toString()
+		+ ". " + this.itemName + " - "+this.itemCategory + " - " + this.getItemPriceAsString();
 	}
-	public int getItemId(){
+	public Long getItemId(){
 		return this.itemId;
 	}
-	public void setItemId(int id){
-		this.itemId = id;
+	public void setItemId(Long d){
+		this.itemId = d;
 	}
 	public String getItemCategory(){
 		return this.itemCategory;
