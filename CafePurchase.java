@@ -7,7 +7,7 @@ public class CafePurchase {
 	private String currency = "£";
 	private Double serviceCharge = new Double(0);
 	private boolean hasHotfood =  false;
-	private Double capedServiceChargeValue = new Double(20);
+	private Double capedServiceChargeValue = new Double(20);	
 	public CafePurchase(){}
 	
 	public void addItem(CafeItem item,Long quantity) {
@@ -34,11 +34,18 @@ public class CafePurchase {
 		}
 		if(serviceCharge > capedServiceChargeValue)
 			serviceCharge = capedServiceChargeValue;
+
 	}
 	public HashMap<Long, Long> getPurchase() {
 		return this.purchase;
 	}
 
+	public String getTotalBilledAsString(){
+		return this.currency +""+this.getTotalBilled();
+	}
+	public Double getTotalBilled(){
+		return this.getTotal() + this.getServiceCharge();
+	}
 	public String getTotalAsString(){
 		return this.currency +""+this.getTotal();
 	}
