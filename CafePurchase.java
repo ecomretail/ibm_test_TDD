@@ -5,6 +5,7 @@ public class CafePurchase {
     private Double purchaseTotal = new Double(0);
 	private String currency = "£";
 	private Double serviceCharge = new Double(0);
+	private boolean hasHotfood =  false;
 	public CafePurchase(){}
 	
 	public void addItem(CafeItem item,Long quantity) {
@@ -13,11 +14,23 @@ public class CafePurchase {
 			totalQuantity +=  quantity;
 		else
 			totalQuantity = quantity;
-		purchaseTotal+=item.getItemPrice()*quantity;
-		serviceCharge = 0.1*purchaseTotal;
 		this.purchase.put(item.getItemId(),totalQuantity);
+		/** compute total and serviceCharge */
+		purchaseTotal+=item.getItemPrice()*quantity;
+		computeService(item);
 	}
-	
+	private void computeService(CafeItem item){
+		
+		if(!hasHotfood && item.getItemCategory().equalsIgnoreCase("Hot food")){
+			this.hasHotfood = true;
+		}
+		if(hasHotfood){			
+  serviceCharge = 0.2*purchaseTotal;
+		}
+		else {
+		serviceCharge = 0.1*purchaseTotal;			
+		}
+	}
 	public HashMap<Long, Long> getPurchase() {
 		return this.purchase;
 	}
